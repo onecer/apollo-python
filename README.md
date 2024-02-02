@@ -25,7 +25,7 @@ lm_API_KEY = client.get_value("lm_API_KEY")
 |:---|:---|
 |APP_ID|app id 应用名|
 |IDC| cluster 集群名|
-｜ENV｜ 环境 默认（DEV）｜
+|ENV|环境 默认（DEV）|
 |APOLLO_ACCESS_KEY_SECRET|访问密钥|
 |CLIENT_IP| 默认会自己获取，但是也可以支持自己传递 |
 |APOLLO_CACHE_PATH|配置缓存路径|
@@ -39,6 +39,16 @@ lm_API_KEY = client.get_value("lm_API_KEY")
 
 默认会启动一个线程来定时更新本地缓存的配置，所以，如果每次用的是 get_value 来获取配置，可以实现配置热更新。
 
+## 本地打包 wheel 
+
+```
+python3 -m pip install --user --upgrade setuptools wheel
+python3 setup.py sdist bdist_wheel  
+
+# upload
+twine upload dist/*
+
+```
 
 ## License
 -------

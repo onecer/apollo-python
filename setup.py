@@ -14,11 +14,11 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'apollo_python'
 DESCRIPTION = 'A simple python library for apollo config client.'
-URL = 'https://github.com/onecer/apollo-client'
+URL = 'https://github.com/onecer/apollo-python'
 EMAIL = 'yinyongyou@gmail.com'
 AUTHOR = 'Onecer'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '1.1.0'
+VERSION = '1.1.1'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
