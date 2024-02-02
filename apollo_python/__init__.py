@@ -1,1 +1,1 @@
-from .core import *
+from .apollo_client import *

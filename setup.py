@@ -18,7 +18,7 @@ URL = 'https://github.com/onecer/apollo-python'
 EMAIL = 'yinyongyou@gmail.com'
 AUTHOR = 'Onecer'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '1.1.1'
+VERSION = '1.1.3'
 
 # What packages are required for this module to be executed?
 REQUIRED = [

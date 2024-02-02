@@ -8,6 +8,10 @@ pip install apollo-client
 ## 使用
 -----
 
+导入包
+```
+from apollo_python import ApolloClient
+```
 
 ```
 app_id = 'demo-service'

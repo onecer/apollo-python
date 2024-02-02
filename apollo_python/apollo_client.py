@@ -42,7 +42,7 @@ class ApolloClient(object):
         logger.add(sys.stdout, level=log_level)
 
         # Set attributes
-        self.app_id = self.config_setter("APPID", app_id)
+        self.app_id = self.config_setter("APP_ID", app_id)
         self.cluster = self.config_setter("IDC", cluster)
         self.secret = self.config_setter("APOLLO_ACCESS_KEY_SECRET", secret)
         self.env = env
