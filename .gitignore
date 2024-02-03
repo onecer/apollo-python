@@ -81,6 +81,7 @@ celerybeat-schedule
 
 # virtualenv
 venv/
+.venv/
 ENV/
 
 # Spyder project settings
@@ -90,3 +91,7 @@ ENV/
 .ropeproject
 *.npy
 *.pkl
+
+# cache
+.cache/
+apollo_python/tmp/

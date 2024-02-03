@@ -37,22 +37,21 @@ class ApolloClient(object):
                  notification_map=None,
                  cache_path=None):
 
-        # Set up the logger
         logger.remove()
-        logger.add(sys.stdout, level=log_level)
+        self.log_level = self.config_setter("LOG_LEVEL", log_level)
+        logger.add(sys.stdout, level=self.log_level)
 
-        # Set attributes
         self.app_id = self.config_setter("APP_ID", app_id)
         self.cluster = self.config_setter("IDC", cluster)
-        self.secret = self.config_setter("APOLLO_ACCESS_KEY_SECRET", secret)
-        self.env = env
+
+        self.secret = self.config_setter("APOLLO_ACCESS_KEY_SECRET", secret) or ''  # for None case
+        self.env = self.config_setter("ENV", env)
         self.client_ip = self.config_setter("CLIENT_IP", client_ip) or self.init_ip()
         self.cache_path = self.config_setter("APOLLO_CACHE_PATH", cache_path) or self.default_cache_path()
-        self.apollo_meta = os.environ.get(f"{env}_META") or self.config_setter("APOLLO_META", config_url)
+        self.apollo_meta = os.environ.get(f"{self.env}_META") or self.config_setter("APOLLO_META", config_url)
 
         logger.info("APOLLO_META: {}", self.apollo_meta)
 
-        # Thread management
         self.need_hot_update = need_hot_update
         self.change_listener = change_listener
         self._notification_map = notification_map or {'application': -1}
@@ -64,7 +63,6 @@ class ApolloClient(object):
         self.no_key_cache = {}
         self.hash_cache = {}
 
-        # Initialize cache and start threads
         self._init_load_all_namespaces()
         if self.need_hot_update:
             self._start_hot_update()
@@ -420,7 +418,7 @@ if __name__ == '__main__':
     secret = ''
     env = 'DEV'
 
-    client = ApolloClient(app_id=app_id, config_url=config_url, cluster=cluster, secret=secret, env=env)
+    client = ApolloClient(app_id=app_id, config_url=config_url, cluster=cluster, secret=secret, env=env, need_hot_update=False)
     for i in range(100):
         lm_API_KEY = client.get_value("lm_API_KEY")
         print(lm_API_KEY)
