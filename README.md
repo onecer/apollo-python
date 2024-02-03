@@ -2,7 +2,7 @@
 -----
 
 ```bash
-pip install apollo-client
+pip install apollo-python
 ```
 
 ## 使用
